@@ -9,6 +9,7 @@ namespace prototypegame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        KeyboardState KeyboardState;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -36,7 +37,15 @@ namespace prototypegame
                 Exit();
 
             // TODO: Add your update logic here
-
+            KeyboardState = Keyboard.GetState();
+            if (KeyboardState.IsKeyDown(Keys.Left))
+            {
+                shibapos.X = shibapos.X - speed;
+            }
+            if (KeyboardState.IsKeyDown(Keys.Right))
+            {
+                shibapos.X = shibapos.X + speed;
+            }
             base.Update(gameTime);
         }
 
@@ -45,6 +54,7 @@ namespace prototypegame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            
 
             base.Draw(gameTime);
         }
